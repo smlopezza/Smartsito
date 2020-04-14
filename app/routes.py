@@ -12,3 +12,11 @@ from werkzeug.urls import url_parse
 @app.route('/index')
 def index():
     return render_template("index.html")
+
+@app.route('/ConsumerView')
+def ConsumerView():
+    return render_template('ConsumerView.html')
+
+@app.route('/RetailerView')
+def RetailerView():
+    return render_template('RetailerView.html')
