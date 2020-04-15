@@ -15,8 +15,28 @@ def index():
 
 @app.route('/ConsumerView')
 def ConsumerView():
-    return render_template('ConsumerView.html')
+    return render_template('ConsumerView.html', user = 1)
 
 @app.route('/RetailerView')
 def RetailerView():
-    return render_template('RetailerView.html')
+    return render_template('RetailerView.html', user = 2)
+
+@app.route('/ConsumerSavings')
+def ConsumerSavings():
+    return render_template('ConsumerSavings.html', user = 1)
+
+@app.route('/ConsumerProducts')
+def ConsumerProducts():
+    return render_template('ConsumerProducts.html', user = 1)
+
+@app.route('/RetailerHotProducts')
+def RetailerHotProducts():
+    return render_template('RetailerHotProducts.html', user = 2)
+
+@app.route('/RetailerPredictions')
+def RetailerPredictions():
+    return render_template('RetailerPredictions.html', user = 2)
+
+@app.route('/RetailerStore')
+def RetailerStore():
+    return render_template('RetailerStore.html', user = 2)
