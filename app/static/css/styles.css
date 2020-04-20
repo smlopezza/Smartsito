@@ -93,6 +93,6 @@ html, body {
   padding: 5%;
 }
 
-#RetailerStore_wrapper{
+#RetailerStore_wrapper, #SavingsConsumer_wrapper{
   width: 100%;
 }
