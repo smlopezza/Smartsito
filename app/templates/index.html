@@ -33,19 +33,28 @@
   <!-- Navigation -->
   <nav class="navbar navbar-light bg-light static-top">
     <div class="container">
-      <a class="btn btn-primary" href="{{ url_for('ConsumerView') }}">Smartsito for Costumers</a>
-      <a class="btn btn-primary" href="{{ url_for('RetailerView') }}">Smartsito for Retailers</a>
-      <!--<a class="btn btn-primary" href="#">Sign In</a>-->
+      <div class="row">
+        <div class="col-lg-6" style='padding: 10px;'>
+          <a class="btn btn-primary" href="{{ url_for('RetailerView') }}" >Smartsito for Retailers</a>
+        </div>
+        <div class="col-lg-6" style='padding: 10px;'>
+          <a class="btn btn-primary" href="{{ url_for('RetailerView') }}">Smartsito for Retailers</a>
+        </div>
+      </div>
     </div>
-  </nav>
-
+</nav>
   <!-- Masthead -->
+  <div class="row" style='padding: 10px;'>
+    <div class="col-xl-12 mx-auto text-center">
+      <img  src="{{ url_for('static', filename='images/LogoSmartSito.png') }}" alt="LogoSmartsito" width="150" height="150">
+    </div>
+  </div>
+
   <header class="masthead text-white text-center">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
         <div class="col-xl-9 mx-auto">
-          <img  src="{{ url_for('static', filename='images/LogoSmartSito.png') }}" alt="LogoSmartsito" width="80" height="80">
           <h1 class="mb-5">  Smart Food Waste Reduction starts with you!</h1>
         </div>
         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
@@ -106,7 +115,7 @@
     <div class="row">
       <div class="col-md-4 mb-5">
         <div class="card h-100">
-          <img class="card-img-top" src="{{ url_for('static', filename='images/card1.jpg') }}" alt="Woman in a supermarket" height="300">
+          <img class="card-img-top" src="{{ url_for('static', filename='images/card1.jpg') }}" alt="Woman in a supermarket" height="200">
           <div class="card-body">
             <h4 class="card-title">For Consumers</h4>
             <p class="card-text">We are a community of responsible consumers. We are aware of our impact on climate change through food waste reduction.</p>
@@ -118,7 +127,7 @@
       </div>
       <div class="col-md-4 mb-5">
         <div class="card h-100">
-          <img class="card-img-top" src="{{ url_for('static', filename='images/card2.jpg') }}" alt="Grocery store" height="300">
+          <img class="card-img-top" src="{{ url_for('static', filename='images/card2.jpg') }}" alt="Grocery store" height="200">
           <div class="card-body">
             <h4 class="card-title">For Retailers</h4>
             <p class="card-text">We allow retailers to reach consumers with targeted food products based on our user-centric insights.</p>
@@ -130,7 +139,7 @@
       </div>
       <div class="col-md-4 mb-5">
         <div class="card h-100">
-          <img class="card-img-top" src="{{ url_for('static', filename='images/card3.jpg') }}" alt="Toronto view from the island" height="300">
+          <img class="card-img-top" src="{{ url_for('static', filename='images/card3.jpg') }}" alt="Toronto view from the island" height="200">
           <div class="card-body">
             <h4 class="card-title">For municipalities</h4>
             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
