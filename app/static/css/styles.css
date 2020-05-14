@@ -7,6 +7,36 @@ html, body {
     color: black !important;
 }
 
+header.masthead {
+  position: relative;
+  background-color: #343a40;
+  background: url("../images/bg-masthead.jpg") no-repeat center center;
+  background-size: cover;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.link2 {
+  color: #86cc2b !important;
+  text-decoration: none;
+  background-color: transparent;
+  box-sizing: border-box;
+  text-align: -webkit-match-parent;
+  list-style: none;
+  font-size: 1rem !important;
+  font-family: Lato,'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+}
+
+.call-to-action {
+  position: relative;
+  background-color: #343a40;
+  background: url("../images/bg-masthead.jpg") no-repeat center center;
+  background-size: cover;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
 .logoSmartSito{
   padding-top: 10%;
   display: flex;
@@ -45,7 +75,8 @@ html, body {
 
 .btn-primary {
   background-color: #86cc2b !important;
-  color: black !important;
+  color: white !important;
+  border: 0px;
 }
 
 .bg-gradient-primary{
