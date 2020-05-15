@@ -40,3 +40,8 @@ def RetailerPredictions():
 @app.route('/RetailerStore')
 def RetailerStore():
     return render_template('RetailerStore.html', user = 2)
+
+
+@app.route('/Dashboard01')
+def Dashboard01():
+    return render_template('Dashboard01.html', user = 2)
