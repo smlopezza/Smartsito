@@ -17,6 +17,8 @@
   <link href="{{ url_for('static', filename='vendor2/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
 
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/logosmartsito_icon.ico') }}"> </link>
+
 
 
 {% endblock %}
@@ -35,7 +37,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6" style='padding: 10px;'>
-          <a class="btn btn-primary" href="{{ url_for('RetailerView') }}" >Smartsito for Retailers</a>
+          <a class="btn btn-primary" href="{{ url_for('ConsumerView') }}" >Smartsito for Consumers </a>
         </div>
         <div class="col-lg-6" style='padding: 10px;'>
           <a class="btn btn-primary" href="{{ url_for('RetailerView') }}">Smartsito for Retailers</a>
@@ -84,17 +86,17 @@
               <i class="fas fa-globe-americas m-auto text-primary"></i>
             </div>
             <h3>Environmentaly Responsible</h3>
-            <p class="lead mb-0"> We avoid the food waste</p>
+            <p class="lead mb-0"> We help you avoid your food waste.</p>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
             <div class="features-icons-icon d-flex">
-              <!--<i class="icon-layers m-auto text-primary"></i>-->
-              <i class="fas fa-utensils m-auto text-primary"></i>
+              <!--<i class="fas fa-utensils m-auto text-primary"></i>-->
+              <i class="fas fa-house-user m-auto text-primary"></i>
             </div>
-            <h3>Bootstrap 4 Ready</h3>
-            <p class="lead mb-0">Featuring the latest build of the new Bootstrap 4 framework!</p>
+            <h3>Empowered Families</h3>
+            <p class="lead mb-0">We are empowering a more responsible food consumption in households.</p>
           </div>
         </div>
         <div class="col-lg-4">
@@ -103,14 +105,15 @@
               <!--<i class="icon-check m-auto text-primary"></i>-->
               <i class="fas fa-piggy-bank m-auto text-primary"></i>
             </div>
-            <h3>Easy to Use</h3>
-            <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
+            <h3>Save Money</h3>
+            <p class="lead mb-0">We will notify you before your food expires, give you ideas and help you save money!</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+<!--
   <section class="showcase" style="padding: 50px;">
     <div class="row">
       <div class="col-md-4 mb-5">
@@ -150,10 +153,10 @@
         </div>
       </div>
     </div>
-    <!-- /.row -->
+
 
   </section>
-
+-->
 
 
 
@@ -162,33 +165,83 @@
     <div class="container-fluid p-0">
       <div class="row no-gutters">
 
-        <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('static/images/bg-showcase-1.jpg');"></div>
+        <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('static/images/card1.jpg');"></div>
         <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-          <h2>Responsible food consumption</h2>
-          <p class="lead mb-0">We are empowering a more responsible food consumption in households.</p>
+          <h2>For Consumers</h2>
+          <p class="lead mb-0">We are a community of responsible consumers. We are aware of our impact on climate change through food waste reduction. We are empowering a more responsible food consumption in households. </p>
+            <ul>
+              <li>Receive reminders for your food about to expire so you can plan ahead</li>
+              <li>Get recipes using the items you have at home</li>
+              <li>Track your savings</li>
+              <li>Receive special discounds when buying with our partners</li>
+            </ul>
+
         </div>
       </div>
       <div class="row no-gutters">
-        <div class="col-lg-6 text-white showcase-img" style="background-image: url('static/images/bg-showcase-2.jpg');"></div>
+        <div class="col-lg-6 text-white showcase-img" style="background-image: url('static/images/card2.jpg');"></div>
         <div class="col-lg-6 my-auto showcase-text">
-          <h2>Customized inventory recomendations</h2>
-          <p class="lead mb-0">Retailers benefit from our customized inventory recommendations for a sustainable and efficient supply.</p>
+          <h2>For Retailers</h2>
+          <p class="lead mb-0">We allow retailers to reach consumers with targeted food products based on our user-centric insights. Retailers benefit from our customized inventory recommendations for a sustainable and efficient supply.</p>
         </div>
       </div>
       <div class="row no-gutters">
-        <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('static/images/bg-showcase-3.jpg');"></div>
+        <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('static/images/card3.jpg');"></div>
         <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-          <h2>Key Partners</h2>
+          <h2>For municipalities</h2>
           <p class="lead mb-0">We are a key partner for municipalities committed to achieve carbon footprint reduction.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <section class="showcase" style="padding: 50px;">
+    <div class="row">
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <img class="card-img-top" src="{{ url_for('static', filename='images/card4.jpg') }}" alt="Woman coking" height="200">
+          <div class="card-body">
+            <h4 class="card-title">Recipes</h4>
+            <p class="card-text"> Find the most delicious and easiest recipes with the ingredients from your fridge.  Save your food and enjoy a great meal!</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">Find Out More!</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <img class="card-img-top" src="{{ url_for('static', filename='images/card5.jpg') }}" alt="Grocery store" height="200">
+          <div class="card-body">
+            <h4 class="card-title">Tips and tricks</h4>
+            <p class="card-text">Learn how to properly wash and store your food for longer life.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">Find Out More!</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <img class="card-img-top" src="{{ url_for('static', filename='images/card6.jpg') }}" alt="Woman in a grocery store" height="200">
+          <div class="card-body">
+            <h4 class="card-title">Rewards</h4>
+            <p class="card-text">Get the best deals in the stores nearby.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">Find Out More!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </section>
+
   <!-- Testimonials -->
   <section class="testimonials text-center bg-light">
     <div class="container">
-      <h2 class="mb-5"> Our Team </h2>
+      <h2 class="mb-5"> Meet the Team </h2>
       <div class="row">
         <div class="col-lg-3">
           <div class="testimonial-item mx-auto mb-5 mb-lg-0">
@@ -220,6 +273,21 @@
             <p class="font-weight-light mb-0">"I love exploring knowledge and exploiting curiosity to positively impact the communities I belong to."</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Icons Grid -->
+  <section class="features-icons bg-light text-center">
+    <div class="container">
+      <h2 class="mb-5"> Our (Future) Partners </h2>
+      <div class="row">
+        <div class="col-lg-4">
+          Here logo of our future partners
+        </div>
+
+
       </div>
     </div>
   </section>
