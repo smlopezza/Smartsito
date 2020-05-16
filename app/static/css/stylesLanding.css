@@ -5,7 +5,6 @@ html, body {
     margin: 0;
     font-size: 1rem !important;
     color: black !important;
-    overflow: hidden;
 }
 
 header.masthead {
@@ -141,9 +140,4 @@ header.masthead {
 
 .bg-primary {
     background-color: #86cc2b !important;
-}
-
-.iconSide{
-  float: right;
-  color: #ff8200 !important;
 }

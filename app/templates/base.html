@@ -8,7 +8,7 @@
   {{ super() }}
 
   <!-- Custom fonts for this template-->
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}" ></link>
+  <link href="{{ url_for('static', filename='vendor2/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"></link>
 
   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"></link>
@@ -52,26 +52,67 @@
 {% block body %}
   {{ super() }}
 
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+    <a class="navbar-brand" href="#">
+        <img src="{{ url_for('static', filename='images/LogoSmartSito.png') }}"  width="40" height="40" class="d-inline-block align-top" alt="">
+    </a>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <!--<li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('index')}}">Home <span class="sr-only">(current)</span></a>
+            </li>-->
+            <!--<li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+            </li>-->
+
+            <!-- This menu is hidden in bigger devices with d-sm-none.
+           The sidebar isn't proper for smaller screens imo, so this dropdown menu can keep all the useful sidebar itens exclusively for smaller screens  -->
+            <li class="nav-item dropdown d-sm-block d-md-none">
+                <a class="nav-link dropdown-toggle" href="#" id="smallerscreenmenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Menu
+                </a>
+                <div class="dropdown-menu" aria-labelledby="smallerscreenmenu">
+                    <a class="dropdown-item" href="#">Dashboard <i class="fas fa-bars"></i> </a>
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="#">Tasks</a>
+                    <a class="dropdown-item" href="#">Etc ...</a>
+                </div>
+            </li>
+            <!-- Smaller devices menu END -->
+
+        </ul>
+    </div>
+</nav>
+
     <!-- Page Wrapper -->
-    <div id="wrapper" style='height: 100%; background-color: yellow;'>
+    <div id="wrapper" style='height: 100%; margin-top: 56px; '>
 
 
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion sticky-offset" id="accordionSidebar">
 
           <!-- Sidebar - Brand -->
           <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-            <div class="sidebar-brand-icon rotate-n-15">
-              <i class="fas fa-laugh-wink"></i>
+            {% if user == 1 %}
+            <div class="sidebar-brand-icon">
+              <i class="fas fa-user iconSide"></i>
+            </div>
+
+            <div class="sidebar-brand-text mx-3">
+                Consumer
+            </div>
+            {% elif user == 2%}
+            <div class="sidebar-brand-icon">
+              <i class="fas fa-warehouse iconSide"></i>
             </div>
             <div class="sidebar-brand-text mx-3">
-              {% if user == 1 %}
-                Consumer
-              {% elif user == 2%}
                 Retailer
-              {% endif %}
             </div>
+            {% endif %}
           </a>
 
           <!-- Divider -->
@@ -80,11 +121,10 @@
           <!-- Nav Item - Dashboard -->
           <li class="nav-item active">
             {% if user == 1 %}
-              <a class="nav-link" href="{{ url_for('ConsumerView') }}"> Dashboard</a>
+              <a class="nav-link" href="{{ url_for('ConsumerView') }}"> Dashboard <i class="fas fa-chart-line fa-2x iconSide" ></i> </a>
             {% elif user ==  2%}
-              <a class="nav-link" href="{{ url_for('RetailerView') }}"> Dashboard</a>
+              <a class="nav-link" href="{{ url_for('RetailerView') }}"> Dashboard <i class="fas fa-chart-line fa-2x iconSide" ></i> </a>
             {% endif %}
-
           </li>
 
           <!-- Divider -->
@@ -97,34 +137,34 @@
 
           {% if user == 1%}
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('ConsumerSavings') }}" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-              Savings
+            <a class="nav-link" href="{{ url_for('ConsumerSavings') }}" >
+              Savings <i class="fas fa-piggy-bank fa-2x iconSide" ></i>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('ConsumerProducts')  }}" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-              Fridge Products
+            <a class="nav-link" href="{{ url_for('ConsumerProducts')  }}" >
+              Fridge Products <i class="fas fa-leaf fa-2x iconSide"></i>
             </a>
           </li>
 
           {% elif user == 2 %}
 
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('RetailerHotProducts') }}" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-              Hot Products
+            <a class="nav-link" href="{{ url_for('RetailerHotProducts') }}" >
+              Hot Products <i class="fab fa-hotjar fa-2x iconSide"></i>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('RetailerPredictions') }}" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-              Predictions
+            <a class="nav-link" href="{{ url_for('RetailerPredictions') }}" >
+              Predictions <i class="fas fa-poll fa-2x iconSide"></i>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('RetailerStore') }}" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-              Consumers per Store
+            <a class="nav-link" href="{{ url_for('RetailerStore') }}" >
+              Consumers per Store <i class="fas fa-users fa-2x iconSide"></i>
             </a>
           </li>
 
@@ -134,8 +174,8 @@
           <hr class="sidebar-divider">
 
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('index')}}" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-              Logout
+            <a class="nav-link" href="{{ url_for('index')}}" >
+              Logout <i class="fas fa-sign-out-alt fa-2x iconSide"></i>
             </a>
           </li>
 
