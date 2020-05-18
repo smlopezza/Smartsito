@@ -29,6 +29,10 @@ def ConsumerSavings():
 def ConsumerProducts():
     return render_template('ConsumerProducts.html', user = 1)
 
+@app.route('/ConsumerRewards')
+def ConsumerRewards():
+    return render_template('ConsumerRewards.html', user = 1)
+
 @app.route('/RetailerHotProducts')
 def RetailerHotProducts():
     return render_template('RetailerHotProducts.html', user = 2)
