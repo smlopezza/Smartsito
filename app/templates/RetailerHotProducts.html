@@ -7,74 +7,92 @@
   <h1 class="h3 mb-0 text-gray-800"> Hot Products </h1>
 </div>
 
-<div class="row" id='contentDiv'>
-  <table  id='RetailerStore' class="table table-hover" >
-    <thead>
-      <th>Product</th>
-      <th>Units</th>
-      <th>Earnings (CAD)</th>
-    </thead>
+<div class="col-xl-6 col-lg-7">
+  <div class="card shadow mb-4">
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary"> Units </h6>
 
-    <tbody>
-      <tr>
-        <td>Milk</td>
-        <td> 470 </td>
-        <td> 2210 </td>
-      </tr>
+    </div>
+    <!-- Card Body -->
+    <div class="card-body" >
+      <div class="chart-area scroll" id="Plot01">
+        <script>
+          var graphs01 = {{plot01 | safe}};
+          Plotly.plot('Plot01',graphs01,{});
+        </script>
 
-
-
-      <tr>
-        <td>Eggs</td>
-        <td> 3000 </td>
-        <td>4050</td>
-      </tr>
-
-      <tr>
-        <td>Yogurt</td>
-        <td> 5290 </td>
-        <td> 6720 </td>
-      </tr>
-
-      <tr>
-        <td>Almond Milk</td>
-        <td> 370 </td>
-        <td> 987 </td>
-      </tr>
-
-      <tr>
-        <td>Cheese</td>
-        <td> 413 </td>
-        <td> 1817 </td>
-      </tr>
-
-      <tr>
-        <td>Ice cream</td>
-        <td> 3221 </td>
-        <td> 1769 </td>
-      </tr>
-
-      <tr>
-        <td>Sour cream</td>
-        <td> 322 </td>
-        <td> 1761 </td>
-      </tr>
-
-    </tbody>
-
-    <tfoot>
-      <tr>
-        <th style="text-align:center">Total:</th>
-        <th>13086</th>
-        <th>19314</th>
-      </tr>
-    </tfoot>
-
-  </table>
-
-
-
+      </div>
+    </div>
+  </div>
 </div>
+
+<div class="col-xl-6 col-lg-7">
+  <div class="card shadow mb-4">
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary"> Earnings </h6>
+
+    </div>
+    <!-- Card Body -->
+    <div class="card-body" >
+      <div class="chart-area scroll" id="Plot02">
+        <script>
+          var graphs02 = {{plot02 | safe}};
+          Plotly.plot('Plot02',graphs02,{});
+        </script>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-xl-12 col-lg-7">
+  <div class="card shadow mb-4">
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary"> Hot Products Table </h6>
+
+    </div>
+    <!-- Card Body -->
+    <div class="card-body" >
+      <div class="chart-area scroll" id="bargraph">
+        <table  id='RetailerStore' class="table table-hover" >
+          <thead>
+            <th>Product</th>
+            <th>Units</th>
+            <th>Earnings (CAD)</th>
+          </thead>
+
+          <tbody>
+
+            {% for key,value in df_HotProducts.iterrows() %}
+              <tr>
+                <td> {{ value.Product }}</td>
+                <td> {{ value.Units}} </td>
+                <td> $ {{ value.Earnings }} </td>
+              </tr>
+            {% endfor %}
+
+          </tbody>
+
+          <tfoot>
+            <tr>
+              <th style="text-align:center">Total:</th>
+              <th>{{ df_HotProducts.Units.sum() }}</th>
+              <th>$ {{ df_HotProducts.Earnings.sum() }}</th>
+            </tr>
+          </tfoot>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 
 {% endblock %}

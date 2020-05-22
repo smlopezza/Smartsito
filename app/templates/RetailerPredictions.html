@@ -7,86 +7,100 @@
   <h1 class="h3 mb-0 text-gray-800"> Predictions for next months </h1>
 </div>
 
-<!-- Content Row -->
-<div class="row" id='contentDiv'>
-  <table  id='RetailerStore' class="table table-hover" >
-    <thead>
-      <th></th>
-      <th>Month</th>
-      <th>Units</th>
-      <th>Earnings (CAD)</th>
-    </thead>
+<div class="col-xl-6 col-lg-7" >
+  <div class="card shadow mb-4" >
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary">Prediction of Food Product Demand (CAD)</h6>
+       <!--<div class="dropdown no-arrow">
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+          <div class="dropdown-header">Dropdown Header:</div>
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>-->
+    </div>
+    <!-- Card Body -->
+    <div class="card-body">
 
-    <tbody>
+      <div class="chart-area" id="bargraph">
+        <!--<canvas id="myAreaChart"></canvas>-->
+        <!--<img src="{{ url_for('static', filename='images/Figure1.png') }}" style="height: 100%; width: 100%; align: center;">-->
+        <script>
+          var graphs = {{plot | safe}};
+          Plotly.plot('bargraph',graphs,{});
+        </script>
 
-      <tr>
-        <td style='color:white;'>01</td>
-        <td>April</td>
-        <td> 3170 </td>
-        <td> 9187 </td>
-      </tr>
-
-      <tr>
-        <td style='color:white;'>02</td>
-        <td>May</td>
-        <td> 4513 </td>
-        <td> 13817 </td>
-      </tr>
-
-      <tr>
-        <td style='color:white;'>03</td>
-        <td>June</td>
-        <td> 3221 </td>
-        <td> 10769 </td>
-      </tr>
-
-      <tr>
-        <td style='color:white;'>04</td>
-        <td>July</td>
-        <td> 1322 </td>
-        <td> 5761 </td>
-      </tr>
-
-      <tr>
-        <td style='color:white;'>05</td>
-        <td>August</td>
-        <td> 4700 </td>
-        <td> 15210 </td>
-      </tr>
-
-      <tr>
-        <td style='color:white;'>06</td>
-        <td>September</td>
-        <td> 3000 </td>
-        <td>9050</td>
-      </tr>
-
-      <tr>
-        <td style='color:white;'>07</td>
-        <td>October</td>
-        <td> 5290 </td>
-        <td> 19720 </td>
-      </tr>
-
-      <tr>
-        <td style='color:white;'>07</td>
-        <td>November</td>
-        <td> 290 </td>
-        <td> 1720 </td>
-      </tr>
-
-    </tbody>
-    <tr>
-      <th></th>
-      <th style="text-align:center">Total:</th>
-      <th style="text-align:center">25506</th>
-      <th style="text-align:center">85234</th>
-    </tr>
-
-  </table>
-
-
-
+      </div>
+    </div>
+  </div>
 </div>
+
+<div class="col-xl-6 col-lg-7">
+  <div class="card shadow mb-4">
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary">Prediction of Food Product Demand (CAD)</h6>
+      <div class="dropdown no-arrow">
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <!--<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>-->
+        </a>
+        <!--<div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+          <div class="dropdown-header">Dropdown Header:</div>
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>-->
+      </div>
+    </div>
+    <!-- Card Body -->
+    <div class="card-body" >
+      <div class="chart-area scroll" id="bargraph">
+        <table  id='RetailerStore' class="table table-hover" >
+          <thead>
+            <th></th>
+            <th>Month</th>
+            <th>Units</th>
+            <th>Earnings (CAD)</th>
+          </thead>
+
+          <tbody>
+
+              {% for key,value in dfPredicitons.iterrows() %}
+                <tr>
+                  <td style='color:white;'>01</td>
+                  <td>{{ value.x }}</td>
+                  <td> {{ value.units }} </td>
+                  <td> {{ value.earnings }} </td>
+                </tr>
+              {% endfor %}
+
+
+          </tbody>
+
+          <tr>
+            <th></th>
+            <th style="text-align:center">Total:</th>
+            <th style="text-align:center">{{ dfPredicitons.units.sum() }}</th>
+            <th style="text-align:center"> {{ dfPredicitons.earnings.sum() }} </th>
+          </tr>
+
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 
 {% endblock %}

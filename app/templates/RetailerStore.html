@@ -7,64 +7,66 @@
   <h1 class="h3 mb-0 text-gray-800"> SmartSito Consumers per Store </h1>
 </div>
 
-<!-- Content Row -->
-<div class="row" id='contentDiv'>
-  <table  id='RetailerStore' class="table table-hover" >
-    <thead>
-      <th>Store</th>
-      <th>Food wasted</th>
-      <th>Consumers</th>
-    </thead>
+<div class="col-xl-6 col-lg-7">
+  <div class="card shadow mb-4">
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary">SmartSito consumers per Store</h6>
 
-    <tbody>
-      <tr>
-        <td>Costco</td>
-        <td> 47% </td>
-        <td> 200 </td>
-      </tr>
+    </div>
+    <!-- Card Body -->
+    <div class="card-body" >
+      <div class="chart-area scroll" id="bargraph">
+        <script>
+          var graphs = {{plot | safe}};
+          Plotly.plot('bargraph',graphs,{});
+        </script>
 
-
-
-      <tr>
-        <td>Freshco</td>
-        <td> 30% </td>
-        <td>400</td>
-      </tr>
-
-      <tr>
-        <td>Metro</td>
-        <td> 52% </td>
-        <td> 672 </td>
-      </tr>
-
-      <tr>
-        <td>Food Basics</td>
-        <td> 37% </td>
-        <td> 987 </td>
-      </tr>
-
-      <tr>
-        <td>Shopers</td>
-        <td> 43% </td>
-        <td> 87 </td>
-      </tr>
-
-      <tr>
-        <td>Walmart</td>
-        <td> 32% </td>
-        <td> 176 </td>
-      </tr>
-
-    </tbody>
-    <th colspan='2' style="text-align:center">Total:</th>
-    <th style="text-align:center">2522</th>
-
-
-  </table>
-
-
-
+      </div>
+    </div>
+  </div>
 </div>
+
+<div class="col-xl-6 col-lg-7">
+  <div class="card shadow mb-4">
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary">SmartSito consumers per Store</h6>
+
+    </div>
+    <!-- Card Body -->
+    <div class="card-body" >
+      <div class="chart-area scroll" id="bargraph">
+        <table  id='RetailerStore' class="table table-hover" >
+          <thead>
+            <th>Store</th>
+            <th>Food wasted</th>
+            <th>Consumers</th>
+          </thead>
+
+          <tbody>
+            {% for key,value in df_stores.iterrows() %}
+              <tr>
+                <td> {{ value.Store }}</td>
+                <td> {{ value['Food Wasted']}} </td>
+                <td> {{ value.Consumers }} </td>
+              </tr>
+            {% endfor %}
+
+          </tbody>
+          <th colspan='2' style="text-align:center">Total:</th>
+          <th > {{ df_stores.Consumers.sum() }} </th>
+
+
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 
 {% endblock %}
