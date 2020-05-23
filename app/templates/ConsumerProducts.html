@@ -4,80 +4,131 @@
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h3 mb-0 text-gray-800"> Fridge Products - May 10th</h1>
+  <h1 class="h3 mb-0 text-gray-800"> Fridge Products </h1>
 </div>
 
-<div class="row" id='contentDiv'>
-  <table  id='RetailerStore' class="table table-hover" >
-    <thead>
-      <th>Product</th>
-      <th>Location</th>
-      <th>Date of Expiration</th>
-      <th>Status</th>
-    </thead>
-
-    <tbody>
-      <tr>
-        <td>Red beans</td>
-        <td> Pantry </td>
-        <td> December 30 </td>
-        <td> <button type="button" class="btn btn-success">Good to Eat</button> </td>
-      </tr>
-
-      <tr>
-        <td>Milk</td>
-        <td> Fridge </td>
-        <td> April 30 </td>
-        <td> <button type="button" class="btn btn-danger">Expired</button> </td>
-      </tr>
-
-      <tr>
-        <td>Eggs</td>
-        <td> Fridge </td>
-        <td> May 30 </td>
-        <td><button type="button" class="btn btn-success">Good to Eat</button></td>
-      </tr>
-
-      <tr>
-        <td>Yogurt</td>
-        <td> Fridge </td>
-        <td> June 15 </td>
-        <td> <button type="button" class="btn btn-success">Good to Eat</button> </td>
-      </tr>
-
-      <tr>
-        <td> Meat </td>
-        <td> Freezer </td>
-        <td> May 17 </td>
-        <td> <button type="button" class="btn btn-warning">Expiring Soon</button> </td>
-      </tr>
-
-      <tr>
-        <td> Cheese </td>
-        <td> Fridge </td>
-        <td> May 15 </td>
-        <td> <button type="button" class="btn btn-warning">Expiring Soon</button> </td>
-      </tr>
-
-      <tr>
-        <td>Ice cream</td>
-        <td> Freezer </td>
-        <td> May 20 </td>
-        <td> <button type="button" class="btn btn-warning">Expiring Soon</button> </td>
-      </tr>
-
-      <tr>
-        <td>Sour cream</td>
-        <td> Fridge </td>
-        <td> May 3 </td>
-        <td> <button type="button" class="btn btn-danger">Expired</button> </td>
-      </tr>
-
-    </tbody>
-
-  </table>
-
+<div class="col-xl-3 col-lg-7">
+  <div class="card shadow mb-4" style="width: 18rem;">
+    <img class="card-img-top" src="{{ url_for('static', filename='images/milky.jpg') }}" alt="milk" width="286" height="180">
+    <div class="card-body bg-gradient-warning text-white">
+      <h5 class="card-title"> Milk </h5>
+      <p class="card-text"> Expiring soon <br> Expiring on June 1, 2020</p>
+    </div>
+  </div>
 </div>
+
+<div class="col-xl-3 col-lg-7">
+  <div class="card shadow mb-4" style="width: 18rem;">
+    <img class="card-img-top" src="{{ url_for('static', filename='images/redbeans.jpg') }}" alt="redbeans" width="286" height="180">
+    <div class="card-body bg-gradient-success text-white">
+      <h5 class="card-title"> Red Beans </h5>
+      <p class="card-text"> Good to eat <br> Expiring on April 30, 2021</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-xl-3 col-lg-7">
+  <div class="card shadow mb-" style="width: 18rem;">
+    <img class="card-img-top" src="{{ url_for('static', filename='images/coffee.jpg') }}" alt="coffee" width="286" height="180">
+    <div class="card-body  bg-gradient-danger text-white">
+      <h5 class="card-title"> Coffee </h5>
+      <p class="card-text"> Expired <br> April 30, 2020</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-xl-3 col-lg-7">
+  <div class="card shadow mb-4" style="width: 18rem;">
+    <img class="card-img-top" src="{{ url_for('static', filename='images/tomato.jpg') }}" alt="tomato" width="286" height="180">
+    <div class="card-body bg-gradient-warning text-white">
+      <h5 class="card-title"> Tomato </h5>
+      <p class="card-text"> Expiring soon <br> June 5, 2020</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-xl-3 col-lg-7">
+  <div class="card shadow mb-4" style="width: 18rem;">
+    <img class="card-img-top" src="{{ url_for('static', filename='images/eggs.jpg') }}" alt="eggs" width="286" height="180">
+    <div class="card-body bg-gradient-danger text-white">
+      <h5 class="card-title"> Eggs </h5>
+      <p class="card-text"> Expired <br> May 20, 2020</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-xl-3 col-lg-7">
+  <div class="card shadow mb-4" style="width: 18rem;">
+    <img class="card-img-top" src="{{ url_for('static', filename='images/kiwi.jpg') }}" alt="kiwi" width="286" height="180">
+    <div class="card-body bg-gradient-success text-white">
+      <h5 class="card-title"> Kiwi </h5>
+      <p class="card-text"> Good to eat <br> June 10, 2020</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-xl-3 col-lg-7">
+  <div class="card shadow mb-4" style="width: 18rem;">
+    <img class="card-img-top" src="{{ url_for('static', filename='images/carrot.jpg') }}" alt="carrot" width="286" height="180">
+    <div class="card-body bg-gradient-warning text-white">
+      <h5 class="card-title"> Carrot </h5>
+      <p class="card-text"> Expiring soon <br> June 7, 2020</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-xl-3 col-lg-7">
+  <div class="card shadow mb-4" style="width: 18rem;">
+    <img class="card-img-top" src="{{ url_for('static', filename='images/beef.jpg') }}" alt="beef" width="286" height="180">
+    <div class="card-body bg-gradient-success text-white">
+      <h5 class="card-title"> Beef </h5>
+      <p class="card-text"> Good to eat <br> June 12, 2020</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-xl-3 col-lg-7">
+  <div class="card shadow mb-4" style="width: 18rem;">
+    <img class="card-img-top" src="{{ url_for('static', filename='images/lettuce.jpg') }}" alt="lettuce" width="286" height="180">
+    <div class="card-body bg-gradient-success text-white">
+      <h5 class="card-title"> Lettuce </h5>
+      <p class="card-text"> Good to eat <br> June 9, 2020</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-xl-3 col-lg-7">
+  <div class="card shadow mb-4" style="width: 18rem;">
+    <img class="card-img-top" src="{{ url_for('static', filename='images/cheese.jpg') }}" alt="cheese" width="286" height="180">
+    <div class="card-body bg-gradient-warning text-white">
+      <h5 class="card-title"> Cheese </h5>
+      <p class="card-text"> Expiring soon <br> June 8, 2020</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-xl-3 col-lg-7">
+  <div class="card shadow mb-4" style="width: 18rem;">
+    <img class="card-img-top" src="{{ url_for('static', filename='images/chicken.jpg') }}" alt="chicken" width="286" height="180">
+    <div class="card-body bg-gradient-success text-white">
+      <h5 class="card-title"> Chicken </h5>
+      <p class="card-text"> Good to eat <br> June 12, 2020</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-xl-3 col-lg-7">
+  <div class="card shadow mb-4" style="width: 18rem;">
+    <img class="card-img-top" src="{{ url_for('static', filename='images/potatoes.jpg') }}" alt="potatoes" width="286" height="180">
+    <div class="card-body bg-gradient-danger text-white">
+      <h5 class="card-title"> Potatoes </h5>
+      <p class="card-text"> Expired <br> May 10, 2020</p>
+    </div>
+  </div>
+</div>
+
+
 
 
 {% endblock %}

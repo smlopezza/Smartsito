@@ -7,7 +7,29 @@
   <h1 class="h3 mb-0 text-gray-800"> Savings </h1>
 </div>
 
-<div class="row" id='contentDiv'>
+<div class="col-xl-12 col-lg-7" >
+  <div class="card shadow mb-4" >
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary">Savings by product</h6>
+    </div>
+    <!-- Card Body -->
+    <div class="card-body">
+
+      <div class="chart-area" id="bargraph">
+        <!--<canvas id="myAreaChart"></canvas>-->
+        <!--<img src="{{ url_for('static', filename='images/Figure1.png') }}" style="height: 100%; width: 100%; align: center;">-->
+        <script>
+          var graphs = {{plot | safe}};
+          Plotly.plot('bargraph',graphs,{});
+        </script>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<div class="row" id='contentDiv'>
   <table  id='SavingsConsumer' class="table table-hover" >
     <thead>
       <th>Product</th>
@@ -65,7 +87,7 @@
 
 
 
-</div>
+</div>-->
 
 
 {% endblock %}

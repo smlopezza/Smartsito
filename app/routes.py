@@ -6,7 +6,7 @@ from flask_bootstrap import Bootstrap
 # Redirect to "next" page
 from werkzeug.urls import url_parse
 import plotly
-#import plotly.graph_objs as go
+import plotly.graph_objs as go
 import plotly.express as px
 
 import json
@@ -29,6 +29,21 @@ HotProducts_units = [470, 3000, 5290, 370, 413, 3221, 322]
 HotProducts_earnings = [2210, 4050, 6720, 987, 1817, 1769, 1761]
 df_HotProducts = pd.DataFrame({'Product':HotProducts_name, 'Units': HotProducts_units, 'Earnings': HotProducts_earnings })
 
+savings_Product = ['Milk', 'Eggs', 'Yogurt', 'Red Beans', 'Cheese', 'Ham', 'Tomatos']
+savings_CAD = [22, 4, 2, 7, 8, 17, 11]
+df_savings = pd.DataFrame({'Product': savings_Product, 'Savings (CAD)': savings_CAD})
+
+foodDist_prod = ['Dairy', 'Vegetables', 'Fruit', 'Bakery', 'Meat', 'Others']
+foodDist_value = [7, 30, 15, 9, 6, 20]
+df_foodDist = pd.DataFrame({'Product': foodDist_prod, 'Value': foodDist_value})
+
+SavingsOv_product = [ 'Grain', 'Meat', 'Dairy', 'Produce']
+SavingsOv_consumer = [30, 50, 37, 20]
+SavingsOv_neigh = [15, 64, 23, 23]
+SavingsOv_city = [12, 53, 30, 55]
+df_SavingsOverview = pd.DataFrame({'Product': SavingsOv_product, 'Consumer': SavingsOv_consumer, 'Neighbourhood': SavingsOv_neigh, 'City':SavingsOv_city  })
+
+
 
 @app.route('/')
 @app.route('/index')
@@ -37,7 +52,9 @@ def index():
 
 @app.route('/ConsumerView')
 def ConsumerView():
-    return render_template('ConsumerView.html', user = 1)
+    Fig01 = create_pieFoodDist()
+    Fig02 = create_radar()
+    return render_template('ConsumerView.html', user = 1, plot01=Fig01, plot02=Fig02)
 
 @app.route('/RetailerView')
 def RetailerView():
@@ -46,7 +63,8 @@ def RetailerView():
 
 @app.route('/ConsumerSavings')
 def ConsumerSavings():
-    return render_template('ConsumerSavings.html', user = 1)
+    figure01 = create_plotSavings()
+    return render_template('ConsumerSavings.html', user = 1,  plot=figure01)
 
 @app.route('/ConsumerProducts')
 def ConsumerProducts():
@@ -121,10 +139,6 @@ def create_plot():
 
 def create_pie():
     fig01 = px.pie(df_stores, values = 'Consumers',  names='Store')#, template="plotly_white", labels = {'x':'Month', 'earnings':'Earnings (CAD)'}, hover_data=["earnings"])
-    #fig01.update_xaxes(showgrid=False, zeroline=True)
-    #fig01.update_yaxes(showgrid=True, zeroline=False)
-    #fig01.update_traces(marker=dict(size=12, color='#ff8200'), hovertemplate=None )
-    #fig01.data[0].update(mode='markers+lines', line_shape='spline')
     fig01.update_layout(hovermode="x", hoverlabel=dict( font_color="white",  font_size=16, font_family="Rockwell"))
 
 
@@ -149,4 +163,38 @@ def create_plotProducts():
 
     graphJSON = json.dumps(fig01, cls=plotly.utils.PlotlyJSONEncoder)
 
+    return graphJSON
+
+def create_plotSavings():
+    fig01 = px.bar(df_savings, x='Product', y='Savings (CAD)', template="plotly_white", color='Product')#, labels = {'x':'Month', 'earnings':'Earnings (CAD)'}, hover_data=["Earnings"])
+
+    graphJSON = json.dumps(fig01, cls=plotly.utils.PlotlyJSONEncoder)
+
+    return graphJSON
+
+
+def create_pieFoodDist():
+    fig01 = px.pie(df_foodDist, values = 'Value',  names='Product')#, template="plotly_white", labels = {'x':'Month', 'earnings':'Earnings (CAD)'}, hover_data=["earnings"])
+    fig01.update_layout(hovermode="x", hoverlabel=dict( font_color="white",  font_size=16, font_family="Rockwell"))
+
+
+    graphJSON = json.dumps(fig01, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
+
+def create_radar():
+    fig01 = px.line_polar(df_SavingsOverview, r='Consumer', theta='Product', line_close=True )
+    fig01.update_traces(fill='toself', line=dict(color='blue'), name='Consumer', showlegend = True)
+
+    fig02 = px.line_polar(df_SavingsOverview, r='Neighbourhood', theta='Product', line_close=True)
+    fig02.update_traces(fill='toself', line=dict(color='green'), name='Neighbourhood', showlegend = True)
+
+    fig03 = px.line_polar(df_SavingsOverview, r='City', theta='Product', line_close=True)
+    fig03.update_traces(fill='toself', line=dict(color='#ff8200'), name='City', showlegend = True)
+
+    fig01.add_trace(fig02.data[0])
+    fig01.add_trace(fig03.data[0])
+
+
+
+    graphJSON = json.dumps(fig01, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON
