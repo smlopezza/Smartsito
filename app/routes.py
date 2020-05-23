@@ -154,12 +154,12 @@ def create_pieProducts():
     return graphJSON
 
 def create_plotProducts():
-    fig01 = px.scatter(df_HotProducts, x='Product', y='Earnings', template="plotly_white", labels = {'x':'Month', 'earnings':'Earnings (CAD)'}, hover_data=["Earnings"])
-    fig01.update_xaxes(showgrid=False, zeroline=True)
-    fig01.update_yaxes(showgrid=True, zeroline=False)
-    fig01.update_traces(marker=dict(size=12, color='#ff8200'), hovertemplate=None )
-    fig01.data[0].update(mode='markers+lines', line_shape='spline')
-    fig01.update_layout(hovermode="x", hoverlabel=dict( font_color="white",  font_size=16, font_family="Rockwell"))
+    fig01 = px.bar(df_HotProducts, x='Product', y='Earnings', template="plotly_white", color='Product')#labels = {'x':'Month', 'earnings':'Earnings (CAD)'}, hover_data=["Earnings"])
+    #fig01.update_xaxes(showgrid=False, zeroline=True)
+    #fig01.update_yaxes(showgrid=True, zeroline=False)
+    #fig01.update_traces(marker=dict(size=12, color='#ff8200'), hovertemplate=None )
+    #fig01.data[0].update(mode='markers+lines', line_shape='spline')
+    #fig01.update_layout(hovermode="x", hoverlabel=dict( font_color="white",  font_size=16, font_family="Rockwell"))
 
     graphJSON = json.dumps(fig01, cls=plotly.utils.PlotlyJSONEncoder)
 
